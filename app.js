@@ -336,24 +336,54 @@ let cardIndex = 0;
 let score = 0;
 let startOver = true;
 
-/* Deal button is pressed, two cards are dealt 
-&button disappears*/
+/* Deal button is pressed, two cards are dealt,  
+score updates & play button disappears*/
 play.addEventListener(
   "click",
   function () {
+    cardIndex = Math.floor(
+      Math.random() * deck.length
+    );
+    drawCard = deck[cardIndex];
+    img.src = drawCard.img;
+    //remove card from deck
+    deck.splice(deck[cardIndex], 1);
+    // insert card in your hand
+    yourHand.push(drawCard);
+    //   display your hand
+    const drawn =
+      document.createElement("IMG");
+    drawn.setAttribute("src", img.src);
+    drawn.setAttribute(
+      "class",
+      "cards"
+    );
+    yourHandImg.appendChild(drawn);
+    draw.remove();
+    console.log(drawn);
     pickACard();
-    setTimeout(function () {
-      pickACard();
-    }, 100);
     play.remove();
+    for (
+      let i = 0;
+      i < yourHand.length;
+      i++
+    ) {
+      cardPoints = yourHand[i].points;
+      score += cardPoints;
+      console.log(score);
+    }
   }
 );
 
-// Hit Me! button pressed and a card is dealt
+// Hit Me! button pressed, a card is dealt & score updates
 deal.addEventListener(
   "click",
   function () {
     pickACard();
+    cardPoints =
+      deck[cardIndex].points - 1;
+    score += cardPoints;
+    console.log(score);
   }
 );
 
@@ -443,10 +473,7 @@ function pickACard() {
   draw.remove();
   console.log(drawn);
   // calculate score
-  cardPoints =
-    deck[cardIndex].points - 1;
-  score += cardPoints;
-  console.log(score);
+
   // timeout to allow last card drawn to display before alert
   setTimeout(function () {
     let value =
