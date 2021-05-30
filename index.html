@@ -1,128 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play || BlackJack</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play || BlackJack</title>
+  <link rel="stylesheet" href="main.css">
 </head>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');    
-:root {
-    --clr-main-text: hsl(207, 19%, 9%);
-    --clr-background: hsl(150, 31%, 30%);
-    --clr-container-wood: hsl(15, 36%, 38%);
-}
-*, *::before, *::after {
-    box-sizing: border-box;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    color: var(--clr-main-text);
-}
 
-body {
-    display: grid;
-    min-height: 100vh;
-    place-items: center;
-    margin-top: 0px;
-    line-height: 1.6; 
-    font-family: sans-serif;
-}
-
-.header {
-    display: block;
-    margin-top: -2.1rem;
-    margin-bottom: 4rem;
-    padding-top: 2rem;
-    background-image: url(./img-card-table.jpg);
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    border-radius: 4px;
-    box-shadow: 1em 1em 2em .25em rgba(0,0,0,.3);
-}
-.navbar {
-    margin: top 0;
-    padding: 0;
-}
-h1 {
-    color: white;
-    font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
-}
-.header a {
-    color: white;
-
-}
-.container {
-    display: block;
-    margin: auto; 
-    min-width: 45rem;
-    height: 35rem;
-    background: var(--clr-background);
-    border: .15rem solid var(--clr-container-wood);
-    border-radius: 50%;
-}
-.wood {
-    display: flex;
-    justify-content: center; 
-    min-width: 47rem;
-    min-height: 37rem;
-    background-image: url(./img-wood-grain.jpg);
-    border: .15rem solid var(--clr-container-wood);
-    border-radius: 50%; 
-    box-shadow: 1em 1em 2em .25em rgba(0,0,0,.5);
-}
-.cards-container {
-    display:flex;
-    justify-content: center;
-    padding-top: 12rem;
-    
-}
-
-.cards,
-.draw {
-    max-width:5rem;
-    box-shadow: 1em 1em 2em .25em rgba(0,0,0,.2);
-}
-#deal-btn {
-    display: flex;
-    justify-content: center;
-}
-.btn-hit,
-.btn-stay{
-    grid-template-columns: repeat(2, auto);
-    background: red;
-    margin: auto;
-    border: none;
-    border-radius: 10px;
-    width:3.5rem;
-    height:1.5rem;
-    font-weight:700
-}
-
-</style>
 <body>
-    <header class="header">
-        <h1>Blackjack</h1>
-    </header>
-    <div class="wood">
-        <div class="container">
-            <div class="cards-container">  
-                <div class="your-hand">
-                    <img src="./PNG/red_back.png" class="cards draw"></img>    
-                </div> 
-            </div>
-            <div id="deal-btn">
-                <button type="button" class="btn-hit" id="card-btn">HIT ME!</button>
-                <button type="button" class="btn-stay" id="stay">STAY</button>
-            </div>
+  <header class="header">
+    <h1>Blackjack</h1>
+  </header>
+  <div class="wood">
+    <div class="container">
+      <div class="cards-container">
+        <div class="your-hand">
+          <img src="./PNG/red_back.png" class="cards draw"></img>
+          <img src="./PNG/red_back.png" class="cards draw"></img>
         </div>
-    </div>  
+        <div class="play">
+          <button type="button"class="play-btn">Deal</button>
+        </div>
+      </div>
+      <div id="deal-btn">
+        <button type="button" class="btn-hit" id="card-btn">HIT ME!</button>
+        <button type="button" class="btn-stay" id="stay">STAY</button>
+      </div>
+    </div>
+  </div>
 
-    <!-- javascript -->
-    <script src="app.js"></script>
+  <!-- javascript -->
+  <script src="app.js"></script>
 </body>
+
 </html>
