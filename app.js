@@ -336,13 +336,15 @@ let cardIndex = 0;
 let score = 0;
 let startOver = true;
 
-
-// Deal button is pressed, two cards are dealt
+/* Deal button is pressed, two cards are dealt 
+&button disappears*/
 play.addEventListener(
   "click",
   function () {
     pickACard();
-    setTimeout(function(){pickACard();}, 100);
+    setTimeout(function () {
+      pickACard();
+    }, 100);
     play.remove();
   }
 );
@@ -421,8 +423,6 @@ stay.addEventListener(
   }
 );
 
-
-
 function pickACard() {
   // pick random card
   cardIndex = Math.floor(
@@ -434,13 +434,7 @@ function pickACard() {
   deck.splice(deck[cardIndex], 1);
   // insert card in your hand
   yourHand.push(drawCard);
-
-  /* 
-=================
-display your hand
-=================
-*/
-
+  //   display your hand
   const drawn =
     document.createElement("IMG");
   drawn.setAttribute("src", img.src);
@@ -453,48 +447,53 @@ display your hand
     deck[cardIndex].points - 1;
   score += cardPoints;
   console.log(score);
+  // timeout to allow last card drawn to display before alert
+  setTimeout(function () {
+    let value =
+      yourHand[yourHand.length - 1]
+        .value;
+    let suit =
+      yourHand[yourHand.length - 1]
+        .suit;
+    if (score === 21) {
+      startOver = confirm(
+        "blackjack! you won! Your last card drawn was a " +
+          value +
+          " of " +
+          suit +
+          ", giving you a score of " +
+          score +
+          ". Would you like to play again?"
+      );
+      if (startOver) {
+        location.reload();
+      } else if (!startOver) {
+        location.replace(
+          "https://www.victormikell.com"
+        );
+      }
+    } else if (score > 21) {
+      startOver = confirm(
+        "You lose. Your last card drawn was a " +
+          value +
+          " of " +
+          suit +
+          ", giving you a score of " +
+          score +
+          ". Would you like to play again?"
+      );
 
-  let value =
-    yourHand[yourHand.length - 1].value;
-  let suit =
-    yourHand[yourHand.length - 1].suit;
-  if (score === 21) {
-    startOver = confirm(
-      "blackjack! you won! Your last card drawn was a " +
-        value +
-        " of " +
-        suit +
-        ", giving you a score of " +
-        score +
-        ". Would you like to play again?"
-    );
-    if (startOver) {
-      location.reload();
-    } else if (!startOver) {
-      location.replace(
-        "https://www.victormikell.com"
-      );
+      if (startOver) {
+        location.reload();
+      } else if (!startOver) {
+        location.replace(
+          "https://www.victormikell.com"
+        );
+      }
+      return null;
     }
-  } else if (score > 21) {
-    startOver = confirm(
-      "You lose. Your last card drawn was a " +
-        value +
-        " of " +
-        suit +
-        ", giving you a score of " +
-        score +
-        ". Would you like to play again?"
-    );
-    if (startOver) {
-      location.reload();
-    } else if (!startOver) {
-      location.replace(
-        "https://www.victormikell.com"
-      );
-    }
-    return null;
-  }
-  return cardIndex;
+    return cardIndex;
+  }, 250);
 }
 
 // function removeAllChildNodes(parent) {
