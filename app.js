@@ -493,7 +493,7 @@ function pickACard() {
       return null;
     }
     return cardIndex;
-  }, 250);
+  }, 450);
 }
 
 // function removeAllChildNodes(parent) {
