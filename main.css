@@ -1,18 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');    
 :root {
   --clr-main-text: hsl(207, 19%, 9%);
   --clr-background: hsl(150, 31%, 30%);
-  --clr-container-wood: hsl(
-    15,
-    36%,
-    38%
-  );
+  --clr-container-wood: hsl(15, 36%, 38%);
 }
-
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   list-style: none;
   padding: 0;
@@ -26,87 +18,109 @@ body {
   min-height: 100vh;
   place-items: center;
   margin-top: 0px;
-  line-height: 1.6;
+  line-height: 1.6; 
   font-family: sans-serif;
+    /* changed */
+  background: grey;
+    /* ======= */
 }
 
+/* changed */
 .header {
   display: block;
-  margin-top: -2.1rem;
-  margin-bottom: 4rem;
-  padding-top: 2rem;
-  background-image: url(./img-card-table.jpg);
-  background-size: cover;
-  background-position: center;
-  width: 100%;
+  position: relative;
+  width: 20%;
+  padding: 2rem;
+  padding-bottom: 3rem;
+  border:4px solid rgba(0,0,0,.3);
   border-radius: 4px;
-  box-shadow: 1em 1em 2em 0.25em
-    rgba(0, 0, 0, 0.3);
+  box-shadow: 
+    inset 5em -2em 2em .25em rgba(0,0,0,.3);
+  
+  z-index: 1;
+}
+/* ======= */
+.header::before{
+  content: '';
+  position: absolute;
+  background: rgba(0,0,0,.3);
+  width: calc:(100% + 3px);
+  border-radius: 4px;
+  left:-3px;
+  right:-3px;
+  top:-3px;
+  height:5.4rem;
+  box-shadow: 1em 1em 3em .05em rgba(0,0,0,.8);
+  z-index: -1;
 }
 
 .navbar {
   margin: top 0;
   padding: 0;
+  position: absolute;
 }
-
 h1 {
   color: white;
-  font-family: "Dancing Script", cursive;
+  /* changed */
+  text-align: center;
+  /* ======= */
+  font-family: 'Dancing Script', cursive;
   font-size: 3rem;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
 }
-
+h1::before{
+  content: '';
+  position: absolute;
+  background: red;
+  width: 11rem;
+  border-radius: 10px;
+  bottom:12px;
+  height: 4px;
+  z-index: -1;
+}
 .header a {
-  color: white;
+    color: white;
 }
-
 .container {
   display: block;
-  margin: auto;
+  margin: auto; 
   min-width: 45rem;
   height: 35rem;
   background: var(--clr-background);
-  border: 0.15rem solid
-    var(--clr-container-wood);
+  border: .15rem solid var(--clr-container-wood);
   border-radius: 50%;
 }
-
 .wood {
   display: flex;
-  justify-content: center;
+  justify-content: center; 
   min-width: 47rem;
   min-height: 37rem;
   background-image: url(./img-wood-grain.jpg);
-  border: 0.15rem solid
-    var(--clr-container-wood);
-  border-radius: 50%;
-  box-shadow: 1em 1em 2em 0.25em
-    rgba(0, 0, 0, 0.5);
+  border: .15rem solid var(--clr-container-wood);
+  border-radius: 50%; 
+  box-shadow: 1em 1em 2em .25em rgba(0,0,0,.5);
+}
+.cards-container {
+  display:flex;
+  justify-content: center;
+  padding-top: 12rem;  
 }
 
-.cards-container {
-  display: block;
-  margin: auto;
-  padding-top: 12rem;
-}
-.your-hand {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
 .cards,
 .draw {
-  max-width: 5rem;
-  box-shadow: 1em 1em 2em 0.25em
-    rgba(0, 0, 0, 0.2);
+  max-width:5rem;
+  box-shadow: 1em 1em 2em .25em rgba(0,0,0,.2);
 }
-
 .play {
   display: flex;
   justify-content: center;
   margin: 1rem;
 }
 .play-btn {
-  font-family: "Dancing Script", cursive;
+  font-family: 'Dancing Script', cursive;
   font-size: 2rem;
   border: 0;
   border-radius: 5px;
@@ -121,11 +135,8 @@ h1 {
 
 .btn-hit,
 .btn-stay {
-  grid-template-columns: repeat(
-    2,
-    auto
-  );
-  font-family: "Dancing Script", cursive;
+  grid-template-columns: repeat(2, auto);
+  font-family: 'Dancing Script', cursive;
   font-size: 1rem;
   background: red;
   margin: auto;
